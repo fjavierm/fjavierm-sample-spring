@@ -19,10 +19,19 @@ public class IndexController {
 	@Autowired
 	private QuoteService quoteService;
 
+	@ModelAttribute ("searchQuoteForm")
+	public SearchQuote constructSearch() {
+		return new SearchQuote();
+	}
+
+	@ModelAttribute ("addQuoteForm")
+	public AddQuote constructAdd() {
+		return new AddQuote();
+	}
+
 	@RequestMapping (method = RequestMethod.GET)
 	public String findAll(Model model) {
 		model.addAttribute("quotes", this.quoteService.findAllSorted());
-		this.initFormObsjects(model);
 
 		return "index";
 	}
@@ -34,7 +43,6 @@ public class IndexController {
 		} else {
 			model.addAttribute("quotes", this.quoteService.findByAuthor(searchQuote.getAuthor().toLowerCase()));
 		}
-		this.initFormObsjects(model);
 
 		return "index";
 	}
@@ -42,7 +50,6 @@ public class IndexController {
 	@RequestMapping (method = RequestMethod.POST, params = { "reset" })
 	public String reset(Model model, @ModelAttribute ("searchQuoteForm") SearchQuote searchQuote) {
 		model.addAttribute("quotes", this.quoteService.findAllSorted());
-		this.initFormObsjects(model);
 
 		return "index";
 	}
@@ -51,13 +58,8 @@ public class IndexController {
 	public String addQuote(Model model, @ModelAttribute ("addQuoteForm") AddQuote addQuote) {
 		this.quoteService.save(new Quote(addQuote.getAuthor(), addQuote.getText()));
 		model.addAttribute("quotes", this.quoteService.findAllSorted());
-		this.initFormObsjects(model);
 
 		return "index";
 	}
 
-	private void initFormObsjects(Model model) {
-		model.addAttribute("searchQuoteForm", new SearchQuote());
-		model.addAttribute("addQuoteForm", new AddQuote());
-	}
 }
