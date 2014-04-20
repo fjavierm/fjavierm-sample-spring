@@ -36,13 +36,13 @@
             <div class="collapse navbar-collapse">
                 <ul class="nav navbar-nav">
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Laguages<b class="caret"></b></a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><spring:message code="languages" /><b class="caret"></b></a>
                         <ul class="dropdown-menu">
                             <li>
-                                <a href="#">Spanish</a>
+                                <a href="?language=es"><spring:message code="spanish" /></a>
                             </li>
                             <li>
-                               	<a href="#">English</a>
+                               	<a href="?language=en"><spring:message code="english" /></a>
                             </li>
                         </ul>
                     </li>
@@ -54,8 +54,8 @@
 	                            <div class="form-group">
 	                                <form:input cssClass="form-control" path="author" />
 	                            </div>
-	                            <input type="submit" value="Search" class="btn btn-default" name="search" />
-	                            <input type="submit" value="Reset" class="btn btn-default" name="reset" />
+	                            <input type="submit" value="<spring:message code="search" />" class="btn btn-default" name="search" />
+	                            <input type="submit" value="<spring:message code="reset" />" class="btn btn-default" name="reset" />
 	                        </div>
                         </form:form>
                     </li>

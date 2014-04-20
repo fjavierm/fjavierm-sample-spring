@@ -7,21 +7,21 @@
 	<div class="panel-body">
 		<form:form commandName="addQuoteForm" method="post" cssClass="form-horizontal well">
 			<fieldset>
-				<legend>Add quote</legend>
+				<legend><spring:message code="addQuote" /></legend>
 				
 				<div class="form-group">
-					<form:label path="author" cssClass="col-sm-2 control-label">Author:</form:label>
+					<form:label path="author" cssClass="col-sm-2 control-label"><spring:message code="author" />:</form:label>
 					<form:input path="author" cssClass="form-control" />
 				</div>
 	
 				<div class="form-group">
-					<form:label path="text" class="col-sm-2 control-label">Text:</form:label>
+					<form:label path="text" class="col-sm-2 control-label"><spring:message code="text" />:</form:label>
 					<form:textarea path="text" cssClass="form-control" rows="10" cols="30" />
 				</div>
 				
 				<div class="form-group">
 					<label class="col-md-8 control-label" for="singlebutton"></label>
-					<input type="submit" value="Add" class="btn btn-primary" name="add"/>
+					<input type="submit" value="<spring:message code="add" />" class="btn btn-primary" name="add"/>
 				</div>
 
 			</fieldset>
